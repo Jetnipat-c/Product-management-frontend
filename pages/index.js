@@ -1,10 +1,9 @@
-import Head from "next/head";
 import StyleWrapper from "./styles";
-import Example from "./components/Example/Example";
+import Signin from "./Signin/Signin";
 export default function Home() {
   return (
     <StyleWrapper>
-      <Example />
+      <Signin />
     </StyleWrapper>
   );
 }
