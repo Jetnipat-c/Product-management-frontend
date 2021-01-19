@@ -1,6 +1,7 @@
 import React from "react";
 import { FcButtingIn } from "react-icons/fc";
 import StyleWrapper from "./styles";
+import Link from "next/link";
 function Signin() {
   return (
     <StyleWrapper>
@@ -28,7 +29,9 @@ function Signin() {
               name="login"
               placeholder="password"
             />
-            <input type="submit" class="fadeIn fourth" value="Log In" />
+            <Link href="/Home">
+              <input type="submit" class="fadeIn fourth" value="Log In" />
+            </Link>
           </form>
 
           <div id="formFooter">
