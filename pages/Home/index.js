@@ -1,83 +1,80 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StyleWrapper from "./styles";
-import { Layout, Menu, Breadcrumb } from "antd";
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import Layouts from "../../Layouts/Layouts";
+import { Divider, Input, Empty, Table } from "antd";
+import { service } from "../../service/index";
 
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+const { Search } = Input;
+const columns = [
+  {
+    title: "รหัสสินค้า",
+    dataIndex: "product_id",
+    key: "product_id",
+    render: (text) => <a>{text}</a>,
+  },
+  {
+    title: "ขนาด",
+    dataIndex: "product_size",
+    key: "product_size",
+    responsive: ["md"],
+  },
+  {
+    title: "ความกว้าง",
+    dataIndex: "product_width",
+    key: "product_width",
+    responsive: ["lg"],
+  },
+  {
+    title: "สี",
+    dataIndex: "product_color",
+    key: "product_color",
+    responsive: ["lg"],
+  },
+  {
+    title: "วันที่นำเข้า",
+    dataIndex: "createdAt",
+    key: "createdAt",
+    responsive: ["lg"],
+    width: 200,
+  },
+];
 
 function Home() {
-  const [collapsed, setcollapsed] = useState(false);
-  const handleClick = (e) => {
-    console.log("click ", e);
-  };
-
-  const onCollapse = (collapsed) => {
-    console.log(collapsed);
-    setcollapsed(collapsed);
-  };
+  const [data, setData] = useState([]);
+  const [emptys, setEmptys] = useState(false);
+  console.log(data);
+  useEffect(async () => {
+    let res = await service({
+      url: `/product/stock`,
+      methods: "get",
+    });
+    if (res && res.status === 200) {
+      setData(res.data);
+    } else {
+      setEmptys(true);
+    }
+  }, []);
+  const onSearch = (value) => console.log(value);
   return (
     <StyleWrapper>
-      <Layout style={{ minHeight: "100vh" }}>
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="80"
-          width="300"
-          onBreakpoint={(broken) => {
-            console.log(broken);
-          }}
-          onCollapse={(collapsed, type) => {
-            console.log(collapsed, type);
-          }}
-        >
-          <div className="logo">
-            <h1>Phattotech Companny</h1>
+      <Layouts>
+        <Divider>คลังสินค้า</Divider>
+
+        <div className="box-table">
+          <div className="box-table-item">
+            <Table columns={columns} dataSource={data} />
           </div>
-          <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-            <SubMenu key="sub1" icon={<UserOutlined />} title="กระจก">
-              <Menu.Item key="1">ค้นหากระจกในคลัง</Menu.Item>
-              <Menu.Item key="2">ค้นหากระจกรายชิ้น</Menu.Item>
-              <Menu.Item key="3">เพิ่มกระจกลงระบบ</Menu.Item>
-              <Menu.Item key="4">แก้ไขข้อมูลกระจก</Menu.Item>
-              <Menu.Item key="5">ลบกระจกในระบบ</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub2" icon={<TeamOutlined />} title="บันทึกติดตาม">
-              <Menu.Item key="6">ขั้นตอนที่ 1</Menu.Item>
-              <Menu.Item key="7">ขั้นตอนที่ 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="8" icon={<PieChartOutlined />}>
-              เช็คประวัติกระจก
-            </Menu.Item>
-            {/* <Menu.Item key="2" icon={<DesktopOutlined />}>
-              Option 2
-            </Menu.Item>   
-            <Menu.Item key="9" icon={<FileOutlined />}>
-              Files
-            </Menu.Item> */}
-          </Menu>
-        </Sider>
-        <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: "0 16px" }}>
-            <Breadcrumb style={{ margin: "16px 0" }}></Breadcrumb>
-            <div
-              className="site-layout-background"
-              style={{ padding: 24, minHeight: 360 }}
-            >
-              {/* Bill is a cat. */}
-            </div>
-          </Content>
-          <Footer style={{ textAlign: "center" }}>
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
-        </Layout>
-      </Layout>
+          <div className="box-table-item">
+            {emptys ? (
+              <div>
+                <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </div>
+        </div>
+      </Layouts>
     </StyleWrapper>
   );
 }

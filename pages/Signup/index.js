@@ -2,15 +2,15 @@ import React from "react";
 import { FcButtingIn } from "react-icons/fc";
 import StyleWrapper from "./styles";
 import Link from "next/link";
-function Signin() {
+function Signup() {
   return (
     <StyleWrapper>
       <div className="wrapper fadeInDown">
         <div id="formContent">
-          <h2 className="active"> Sign In </h2>
           <h2 className="inactive underlineHover">
-            <a href="/Signup">Sign Up</a>
+            <a href="/">Sign In</a>
           </h2>
+          <h2 className="active">Sign Up </h2>
 
           <div className="fadeIn first">
             <FcButtingIn style={{ fontSize: "20rem" }} />
@@ -21,18 +21,18 @@ function Signin() {
               type="text"
               id="login"
               className="fadeIn second"
-              name="login"
-              placeholder="login"
+              name="signup"
+              placeholder="Sign up"
             />
             <input
               type="text"
               id="password"
               className="fadeIn third"
-              name="login"
+              name="signup password"
               placeholder="password"
             />
             <Link href="/Home">
-              <input type="submit" className="fadeIn fourth" value="Log In" />
+              <input type="submit" className="fadeIn fourth" value="Sign Up" />
             </Link>
           </form>
 
@@ -47,4 +47,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default Signup;
