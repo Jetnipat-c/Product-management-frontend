@@ -1,5 +1,5 @@
 import StyleWrapper from "./styles";
-import Signin from "./Signin/Signin";
+import Signin from "./Signin/index";
 export default function Home() {
   return (
     <StyleWrapper>

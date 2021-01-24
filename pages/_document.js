@@ -1,4 +1,5 @@
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Head, Main, NextScript, Html } from "next/document";
+import head from "next/head";
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from "styled-components";
 
@@ -21,9 +22,8 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <Html>
         <Head>
-          <title>Product Management</title>
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
         </Head>
@@ -31,7 +31,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

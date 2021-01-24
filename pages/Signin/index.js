@@ -1,15 +1,18 @@
 import React from "react";
 import { FcButtingIn } from "react-icons/fc";
 import StyleWrapper from "./styles";
+import Link from "next/link";
 function Signin() {
   return (
     <StyleWrapper>
-      <div class="wrapper fadeInDown">
+      <div className="wrapper fadeInDown">
         <div id="formContent">
-          <h2 class="active"> Sign In </h2>
-          <h2 class="inactive underlineHover">Sign Up </h2>
+          <h2 className="active"> Sign In </h2>
+          <h2 className="inactive underlineHover">
+            <a href="/Signup">Sign Up</a>
+          </h2>
 
-          <div class="fadeIn first">
+          <div className="fadeIn first">
             <FcButtingIn style={{ fontSize: "20rem" }} />
           </div>
 
@@ -17,22 +20,24 @@ function Signin() {
             <input
               type="text"
               id="login"
-              class="fadeIn second"
+              className="fadeIn second"
               name="login"
               placeholder="login"
             />
             <input
               type="text"
               id="password"
-              class="fadeIn third"
+              className="fadeIn third"
               name="login"
               placeholder="password"
             />
-            <input type="submit" class="fadeIn fourth" value="Log In" />
+            <Link href="/Home">
+              <input type="submit" className="fadeIn fourth" value="Log In" />
+            </Link>
           </form>
 
           <div id="formFooter">
-            <a class="underlineHover" href="#">
+            <a className="underlineHover" href="#">
               Forgot Password?
             </a>
           </div>
