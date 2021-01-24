@@ -38,13 +38,21 @@ function Siderbar() {
       </div>
       <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
         <SubMenu key="sub1" icon={<UserOutlined />} title="กระจก">
-          <Menu.Item key="1">ค้นหากระจกในคลัง</Menu.Item>
+          <Menu.Item key="1">
+            <Link href="/Home">
+              <a>ค้นหากระจกในคลัง</a>
+            </Link>
+          </Menu.Item>
           <Menu.Item key="2">
             <Link href="/Findbyid">
               <a>ค้นหากระจกรายชิ้น</a>
             </Link>
           </Menu.Item>
-          <Menu.Item key="3">เพิ่มกระจกลงระบบ</Menu.Item>
+          <Menu.Item key="3">
+            <Link href="/Createproduct">
+              <a>เพิ่มกระจกในระบบ</a>
+            </Link>
+          </Menu.Item>
           <Menu.Item key="4">แก้ไขข้อมูลกระจก</Menu.Item>
           <Menu.Item key="5">ลบกระจกในระบบ</Menu.Item>
         </SubMenu>

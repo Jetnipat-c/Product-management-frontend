@@ -12,6 +12,7 @@ function Findbyid() {
   const [error, setError] = useState(false);
   console.log(data);
   console.log(cards);
+  
   const onSearch = async (value) => {
     console.log(value);
     let product_id = value;
