@@ -54,13 +54,13 @@ function Findbyid() {
               <div>
                 <Card
                   size="small"
-                  title={data.product_id}
+                  title={"รหัสสินค้า : " + data.product_id}
                   style={{ width: 300 }}
                 >
-                  <p>{data.product_size}</p>
-                  <p>{data.product_width}</p>
-                  <p>{data.product_color}</p>
-                  <p>{data.createdAt}</p>
+                  <p>{"ขนาด : " + data.product_size}</p>
+                  <p>{"ความกว้าง : " + data.product_width}</p>
+                  <p>{"สี : " + data.product_color}</p>
+                  <p>{"วันที่บันทึกสินค้า : " + data.createdAt.slice(0, 10)}</p>
                 </Card>
               </div>
             ) : (
