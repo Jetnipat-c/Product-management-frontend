@@ -13,6 +13,18 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
+    title: "บริษัท",
+    dataIndex: "company",
+    key: "company",
+    responsive: ["md"],
+  },
+  {
+    title: "รหัสสินค้า",
+    dataIndex: "receipt_code",
+    key: "receipt_code",
+    responsive: ["md"],
+  },
+  {
     title: "ขนาด",
     dataIndex: "product_size",
     key: "product_size",
@@ -35,7 +47,19 @@ const columns = [
     dataIndex: "createdAt",
     key: "createdAt",
     responsive: ["lg"],
-    width: 200,
+    render: (text) => <label>{text.slice(0, 10)}</label>,
+  },
+  {
+    title: "ราคาที่ซื้อ",
+    dataIndex: "price",
+    key: "price",
+    responsive: ["lg"],
+  },
+  {
+    title: "อื่นๆ",
+    dataIndex: "note",
+    key: "note",
+    responsive: ["lg"],
   },
 ];
 

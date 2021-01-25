@@ -12,6 +12,7 @@ function Findbyid() {
   const [error, setError] = useState(false);
   console.log(data);
   console.log(cards);
+
   const onSearch = async (value) => {
     console.log(value);
     let product_id = value;
@@ -57,10 +58,14 @@ function Findbyid() {
                   title={"รหัสสินค้า : " + data.product_id}
                   style={{ width: 300 }}
                 >
+                  <p>{"บริษัท : " + data.company}</p>
+                  <p>{"รหัสใบเสร็จ  : " + data.receipt_code}</p>
                   <p>{"ขนาด : " + data.product_size}</p>
                   <p>{"ความกว้าง : " + data.product_width}</p>
                   <p>{"สี : " + data.product_color}</p>
                   <p>{"วันที่บันทึกสินค้า : " + data.createdAt.slice(0, 10)}</p>
+                  <p>{"ราคาที่ซื้อ : " + data.price}</p>
+                  <p>{"อื่นๆ : " + data.note}</p>
                 </Card>
               </div>
             ) : (
