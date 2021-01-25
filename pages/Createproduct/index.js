@@ -3,8 +3,12 @@ import StyleWrapper from "./styles";
 import Layouts from "../../Layouts/Layouts";
 import { Divider, message, Button } from "antd";
 import { service } from "../../service/index";
+import { useRouter } from "next/router";
 
 function Createproduct() {
+  const router = useRouter();
+  const [data, setData] = useState();
+
   const [company, setCompany] = useState("");
   const [receipt_code, setReceipt_code] = useState("");
   const [product_width, setProduct_width] = useState("");
@@ -12,7 +16,7 @@ function Createproduct() {
   const [product_color, setProduct_color] = useState("");
   const [price, setPrice] = useState("");
   const [note, setNote] = useState("");
-
+  //console.log("Data = ", data);
   const handle = async () => {
     let res = await service({
       url: `/product/createproduct`,
@@ -28,6 +32,22 @@ function Createproduct() {
       },
     });
     if (res && res.status === 200) {
+      get_QR_code(res.data.pathfile);
+    } else {
+      error();
+    }
+  };
+
+  const get_QR_code = async (pathfile) => {
+    //console.log("pathfile", pathfile);
+    let res = await service({
+      url: `/product/qr_code/${pathfile}`,
+      methods: "get",
+    });
+    if (res && res.status === 200) {
+      //console.log("res", res.data);
+      setData(pathfile);
+      await download_qr(pathfile);
       success();
     } else {
       error();
@@ -40,6 +60,10 @@ function Createproduct() {
 
   const error = () => {
     message.error("This is an error message");
+  };
+
+  const download_qr = async (pathfile) => {
+    await router.push(`http://localhost:7000/product/qr_code/${pathfile}`);
   };
   return (
     <StyleWrapper>
@@ -85,7 +109,7 @@ function Createproduct() {
           {/* ################################################### */}
           <label>ขนาด</label>
           <select id="size" onChange={(e) => setProduct_size(e.target.value)}>
-          <option value="">None</option>
+            <option value="">None</option>
             <option value="24*84">24*84</option>
             <option value="24*96">24*96</option>
             <option value="24*120">24*120</option>
@@ -98,13 +122,13 @@ function Createproduct() {
 
           <label>สีกระจก</label>
           <select id="color" onChange={(e) => setProduct_color(e.target.value)}>
-          <option value="">None</option>
-            <option value="color_1">กระจกใส</option>
-            <option value="color_2">กระจกใสเขียว</option>
-            <option value="color_3">กระจกชาดำ</option>
-            <option value="color_4">กระจกเงาใส</option>
-            <option value="color_5">กระจกเงาชา</option>
-            <option value="color_6">กระจกเงาดำ</option>
+            <option value="">None</option>
+            <option value="กระจกใส">กระจกใส</option>
+            <option value="กระจกใสเขียว">กระจกใสเขียว</option>
+            <option value="กระจกชาดำ">กระจกชาดำ</option>
+            <option value="กระจกเงาใส">กระจกเงาใส</option>
+            <option value="กระจกเงาชา">กระจกเงาชา</option>
+            <option value="กระจกเงาดำ">กระจกเงาดำ</option>
           </select>
           <br />
           {/* ################################################### */}
@@ -127,6 +151,14 @@ function Createproduct() {
           <Button type="primary" onClick={handle}>
             บันทึกข้อมูล
           </Button>
+
+          {/* <Button
+            type="default"
+            onClick={download_qr}
+            style={{ marginLeft: "10px" }}
+          >
+            ดาวโหลด QR Code
+          </Button> */}
         </div>
       </Layouts>
     </StyleWrapper>
