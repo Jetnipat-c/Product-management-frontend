@@ -104,12 +104,14 @@ const StyleWrapper = styled.div`
   }
 
   input[type="button"]:hover,
+  input[type="password"],
   input[type="submit"]:hover,
   input[type="reset"]:hover {
     background-color: #39ace7;
   }
 
   input[type="button"]:active,
+  input[type="password"],
   input[type="submit"]:active,
   input[type="reset"]:active {
     -moz-transform: scale(0.95);
@@ -119,7 +121,8 @@ const StyleWrapper = styled.div`
     transform: scale(0.95);
   }
 
-  input[type="text"] {
+  input[type="text"],
+  input[type="password"] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -140,12 +143,14 @@ const StyleWrapper = styled.div`
     border-radius: 5px 5px 5px 5px;
   }
 
-  input[type="text"]:focus {
+  input[type="text"]:focus,
+  input[type="password"]:focus {
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
 
-  input[type="text"]:placeholder {
+  input[type="text"]:placeholder,
+  input[type="password"]:placeholder {
     color: #cccccc;
   }
 
