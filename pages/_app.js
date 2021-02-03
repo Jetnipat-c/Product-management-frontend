@@ -1,4 +1,3 @@
-import "../styles/globals.css";
 import Head from "next/head";
 import "antd/dist/antd.css";
 import { createGlobalStyle, ThemeProvider } from "styled-components";

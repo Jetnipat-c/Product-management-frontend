@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import StyleWrapper from "./styles";
+import StyleWrapper from "../../styles/componrnts/styles-findbyid";
 import Layouts from "../../Layouts/Layouts";
 import { Divider, Input, Empty, message, Card } from "antd";
 import { service } from "../../service/index";

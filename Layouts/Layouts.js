@@ -1,8 +1,8 @@
 import React from "react";
 import StyleWrapper from "./styles";
 import { Layout, Breadcrumb, BackTop } from "antd";
-import Siderbar from "../pages/components/Siderbar/index";
-import Footers from "../pages/components/Footers/index";
+import Siderbar from "../components/Siderbar/index";
+import Footers from "../components/Footers/index";
 const { Header, Content } = Layout;
 function Layouts(props) {
   return (

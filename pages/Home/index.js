@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import StyleWrapper from "./styles";
+import StyleWrapper from "../../styles/componrnts/styles-home";
 import Layouts from "../../Layouts/Layouts";
-import { Divider, Input, Empty, Table } from "antd";
+import { Divider, Input, Table } from "antd";
 import { service } from "../../service/index";
 
 const { Search } = Input;
@@ -65,7 +65,6 @@ const columns = [
 
 function Home() {
   const [data, setData] = useState([]);
-  const [emptys, setEmptys] = useState(false);
   console.log(data);
   useEffect(async () => {
     let res = await service({
@@ -75,7 +74,6 @@ function Home() {
     if (res && res.status === 200) {
       setData(res.data);
     } else {
-      setEmptys(true);
     }
   }, []);
   const onSearch = (value) => console.log(value);
@@ -83,19 +81,9 @@ function Home() {
     <StyleWrapper>
       <Layouts>
         <Divider>คลังสินค้า</Divider>
-
         <div className="box-table">
           <div className="box-table-item">
             <Table columns={columns} dataSource={data} />
-          </div>
-          <div className="box-table-item">
-            {emptys ? (
-              <div>
-                <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-              </div>
-            ) : (
-              <div></div>
-            )}
           </div>
         </div>
       </Layouts>
