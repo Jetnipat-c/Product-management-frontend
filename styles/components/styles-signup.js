@@ -79,6 +79,7 @@ const StyleWrapper = styled.div`
   /* FORM TYPOGRAPHY*/
 
   input[type="button"],
+  input[type="password"],
   input[type="submit"],
   input[type="reset"] {
     background-color: #56baed;

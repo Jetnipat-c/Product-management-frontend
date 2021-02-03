@@ -1,7 +1,8 @@
 import React from "react";
 import { FcButtingIn } from "react-icons/fc";
-import StyleWrapper from "./styles";
+import StyleWrapper from "../../styles/components/styles-signin";
 import Link from "next/link";
+import { service } from "../../service/index";
 function Signin() {
   return (
     <StyleWrapper>
