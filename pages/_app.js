@@ -28,6 +28,7 @@ function MyApp({ Component, pageProps }) {
       <GlobalStyle />
       <Head>
         <title>Product Management</title>
+        <link rel="icon" href="../public/favicon.ico" />
         <meta name="viewport" content="viewport-fit=cover" />
       </Head>
       <Component {...pageProps} />

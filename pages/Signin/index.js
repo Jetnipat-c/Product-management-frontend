@@ -1,25 +1,30 @@
 import React, { useState } from "react";
 import { FcButtingIn } from "react-icons/fc";
 import StyleWrapper from "../../styles/components/styles-signin";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { service } from "../../service/index";
 function Signin() {
-  const [username, setUsername] = useState("");
+  const router = useRouter();
+  const [signInfo, setSignInfo] = useState("");
   const [password, setPassword] = useState("");
   const handleClick = async () => {
     let res = await service({
       url: `/auth/signin`,
       method: "post",
       data: {
-        username: username,
+        signInfo: signInfo,
         password: password,
       },
     });
     if (res && res.status === 200) {
-      console.log(res.data);
-      router.push("/home");
+      sessionStorage.setItem(
+        "token",
+        JSON.parse(JSON.stringify(res.data.access_token))
+      );
+      sessionStorage.setItem("account", JSON.stringify(res.data.payload));
+      router.push("/Home");
     } else {
-      error();
+      alert("error");
     }
   };
   return (
@@ -40,9 +45,9 @@ function Signin() {
               type="text"
               id="login"
               className="fadeIn second"
-              name="login"
+              name="signInfo"
               placeholder="login"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setSignInfo(e.target.value)}
             />
             <input
               type="password"
@@ -52,9 +57,13 @@ function Signin() {
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Link href="/Home">
-              <input type="submit" className="fadeIn fourth" value="Log In" />
-            </Link>
+
+            <input
+              type="button"
+              className="fadeIn fourth"
+              value="Log In"
+              onClick={handleClick}
+            />
           </form>
 
           <div id="formFooter">

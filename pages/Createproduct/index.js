@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import StyleWrapper from "../../styles/componrnts/styles-createproduct";
+import StyleWrapper from "../../styles/components/styles-createproduct";
 import Layouts from "../../Layouts/Layouts";
 import { Divider, message, Button } from "antd";
 import { service } from "../../service/index";
