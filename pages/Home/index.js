@@ -3,14 +3,14 @@ import StyleWrapper from "../../styles/components/styles-home";
 import Layouts from "../../Layouts/Layouts";
 import { Divider, Input, Table } from "antd";
 import { service } from "../../service/index";
-
-const { Search } = Input;
+import withAuth from "../../hoc/withAuth";
+//const { Search } = Input;
 const columns = [
   {
     title: "รหัสสินค้า",
     dataIndex: "product_id",
     key: "product_id",
-    render: (text) => <a>{text}</a>,
+    // render: (text) => <a>{text}</a>,
   },
   {
     title: "บริษัท",
@@ -65,7 +65,7 @@ const columns = [
 
 function Home() {
   const [data, setData] = useState([]);
-  console.log(data);
+  //console.log(data);
   useEffect(async () => {
     let res = await service({
       url: `/product/stock`,
@@ -76,14 +76,14 @@ function Home() {
     } else {
     }
   }, []);
-  const onSearch = (value) => console.log(value);
+  //const onSearch = (value) => console.log(value);
   return (
     <StyleWrapper>
       <Layouts>
         <Divider>คลังสินค้า</Divider>
         <div className="box-table">
           <div className="box-table-item">
-            <Table columns={columns} dataSource={data} />
+            <Table columns={columns} dataSource={data} rowKey="product_id" />
           </div>
         </div>
       </Layouts>
@@ -91,4 +91,5 @@ function Home() {
   );
 }
 
-export default Home;
+//export default Home;
+export default withAuth(Home);

@@ -1,9 +1,9 @@
 import StyleWrapper from "./../styles/components/styles-global";
-import Signin from "./Signin/index";
-export default function Home() {
+import Home from "./Home/index";
+export default function Index() {
   return (
     <StyleWrapper>
-      <Signin />
+      <Home />
     </StyleWrapper>
   );
 }

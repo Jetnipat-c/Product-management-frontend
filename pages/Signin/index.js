@@ -17,11 +17,11 @@ function Signin() {
       },
     });
     if (res && res.status === 200) {
-      sessionStorage.setItem(
+      localStorage.setItem(
         "token",
         JSON.parse(JSON.stringify(res.data.access_token))
       );
-      sessionStorage.setItem("account", JSON.stringify(res.data.payload));
+      localStorage.setItem("account", JSON.stringify(res.data.payload));
       router.push("/Home");
     } else {
       alert("error");
