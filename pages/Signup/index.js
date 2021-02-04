@@ -4,7 +4,7 @@ import StyleWrapper from "../../styles/components/styles-signup";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { service } from "../../service/index";
-function Signup() {
+const Signup = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -84,6 +84,6 @@ function Signup() {
       </div>
     </StyleWrapper>
   );
-}
+};
 
 export default Signup;

@@ -63,7 +63,7 @@ const columns = [
   },
 ];
 
-function Home() {
+const Home = () => {
   const [data, setData] = useState([]);
   //console.log(data);
   useEffect(async () => {
@@ -89,7 +89,7 @@ function Home() {
       </Layouts>
     </StyleWrapper>
   );
-}
+};
 
 //export default Home;
 export default withAuth(Home);

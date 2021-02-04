@@ -6,15 +6,12 @@ import { service } from "../../service/index";
 
 const { Search } = Input;
 
-function Findbyid() {
+const Findbyid = () => {
   const [data, setData] = useState([]);
   const [cards, setCards] = useState(false);
   const [error, setError] = useState(false);
-  console.log(data);
-  console.log(cards);
 
   const onSearch = async (value) => {
-    console.log(value);
     let product_id = value;
     let res = await service({
       url: `/product/stock/${product_id}`,
@@ -78,6 +75,6 @@ function Findbyid() {
       </Layouts>
     </StyleWrapper>
   );
-}
+};
 
 export default Findbyid;

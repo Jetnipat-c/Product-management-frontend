@@ -5,10 +5,9 @@ import { Divider, message, Button } from "antd";
 import { service } from "../../service/index";
 import { useRouter } from "next/router";
 
-function Createproduct() {
+const Createproduct = () => {
   const router = useRouter();
   const [data, setData] = useState();
-
   const [company, setCompany] = useState("");
   const [receipt_code, setReceipt_code] = useState("");
   const [product_width, setProduct_width] = useState("");
@@ -16,7 +15,6 @@ function Createproduct() {
   const [product_color, setProduct_color] = useState("");
   const [price, setPrice] = useState("");
   const [note, setNote] = useState("");
-  //console.log("Data = ", data);
   const handle = async () => {
     let res = await service({
       url: `/product/createproduct`,
@@ -39,13 +37,11 @@ function Createproduct() {
   };
 
   const get_QR_code = async (pathfile) => {
-    //console.log("pathfile", pathfile);
     let res = await service({
       url: `/product/qr_code/${pathfile}`,
       methods: "get",
     });
     if (res && res.status === 200) {
-      //console.log("res", res.data);
       setData(pathfile);
       await download_qr(pathfile);
       success();
@@ -163,6 +159,6 @@ function Createproduct() {
       </Layouts>
     </StyleWrapper>
   );
-}
+};
 
 export default Createproduct;

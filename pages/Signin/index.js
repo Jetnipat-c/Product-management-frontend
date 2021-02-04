@@ -3,7 +3,7 @@ import { FcButtingIn } from "react-icons/fc";
 import StyleWrapper from "../../styles/components/styles-signin";
 import { useRouter } from "next/router";
 import { service } from "../../service/index";
-function Signin() {
+const Signin = () => {
   const router = useRouter();
   const [signInfo, setSignInfo] = useState("");
   const [password, setPassword] = useState("");
@@ -75,6 +75,6 @@ function Signin() {
       </div>
     </StyleWrapper>
   );
-}
+};
 
 export default Signin;

@@ -13,7 +13,6 @@ export default (WarpComponent) => {
     }, []);
     const checkAuthentication = async () => {
       let token = await localStorage.getItem("token");
-      console.log("token :", token);
       if (token) {
         let res = await service({
           url: "/auth/sign_token",
@@ -21,7 +20,6 @@ export default (WarpComponent) => {
           token: token,
         });
         if (res && res.status === 200) {
-          console.log("status == 200");
           setIsAuthen(true);
           Router.push("/Home");
         } else {
