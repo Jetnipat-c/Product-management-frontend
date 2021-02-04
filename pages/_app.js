@@ -27,8 +27,8 @@ function MyApp({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <Head>
-        <title>Product Management</title>
-        <link rel="icon" href="../public/favicon.ico" />
+        <title>Phattotech</title>
+        <link rel="shortcut icon" href="/icon.png" />
         <meta name="viewport" content="viewport-fit=cover" />
       </Head>
       <Component {...pageProps} />
