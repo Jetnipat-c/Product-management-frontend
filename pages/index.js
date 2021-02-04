@@ -1,10 +1,9 @@
-import Head from "next/head";
-import StyleWrapper from "./styles";
-import Example from "./components/Example/Example";
-export default function Home() {
+import StyleWrapper from "./../styles/components/styles-global";
+import Home from "./Home/index";
+export default function Index() {
   return (
     <StyleWrapper>
-      <Example />
+      <Home />
     </StyleWrapper>
   );
 }
