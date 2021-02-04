@@ -4,7 +4,7 @@ import Layouts from "../../Layouts/Layouts";
 import { Divider, message, Button } from "antd";
 import { service } from "../../service/index";
 import { useRouter } from "next/router";
-
+import withAuth from "../../hoc/withAuth";
 const Createproduct = () => {
   const router = useRouter();
   const [data, setData] = useState();
@@ -64,7 +64,9 @@ const Createproduct = () => {
   return (
     <StyleWrapper>
       <Layouts>
-        <Divider>เพิ่มกระจกในคลัง</Divider>
+        <Divider>
+          <h1>เพิ่มกระจกในคลัง</h1>
+        </Divider>
         <div className="create-product-box">
           {/* ################################################### */}
           <label>ชื่อบริษัท</label>
@@ -161,4 +163,4 @@ const Createproduct = () => {
   );
 };
 
-export default Createproduct;
+export default withAuth(Createproduct);

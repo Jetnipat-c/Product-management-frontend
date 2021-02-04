@@ -21,7 +21,7 @@ export default (WarpComponent) => {
         });
         if (res && res.status === 200) {
           setIsAuthen(true);
-          Router.push("/Home");
+          //Router.push("/Home");
         } else {
           localStorage.removeItem("token");
           Router.push("/Signin");

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import StyleWrapper from "../../styles/componrnts/styles-findbyid";
+import StyleWrapper from "../../styles/components/styles-findbyid";
 import Layouts from "../../Layouts/Layouts";
 import { Divider, Input, Empty, message, Card } from "antd";
 import { service } from "../../service/index";
-
+import withAuth from "../../hoc/withAuth";
 const { Search } = Input;
 
 const Findbyid = () => {
@@ -33,7 +33,9 @@ const Findbyid = () => {
   return (
     <StyleWrapper>
       <Layouts>
-        <Divider>ค้นหากระจกในคลัง</Divider>
+        <Divider>
+          <h1>ค้นหากระจกในคลัง</h1>
+        </Divider>
 
         <div className="box-search">
           <div className="box-item">
@@ -77,4 +79,4 @@ const Findbyid = () => {
   );
 };
 
-export default Findbyid;
+export default withAuth(Findbyid);

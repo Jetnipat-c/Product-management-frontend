@@ -53,7 +53,11 @@ function Siderbar() {
               <a>เพิ่มกระจกในระบบ</a>
             </Link>
           </Menu.Item>
-          <Menu.Item key="4">แก้ไขข้อมูลกระจก</Menu.Item>
+          <Menu.Item key="4">
+            <Link href="/Editproduct">
+              <a>แก้ไขข้อมูลกระจก</a>
+            </Link>
+          </Menu.Item>
           <Menu.Item key="5">ลบกระจกในระบบ</Menu.Item>
         </SubMenu>
         <SubMenu key="sub2" icon={<TeamOutlined />} title="บันทึกติดตาม">

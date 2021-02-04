@@ -80,7 +80,9 @@ const Home = () => {
   return (
     <StyleWrapper>
       <Layouts>
-        <Divider>คลังสินค้า</Divider>
+        <Divider>
+          <h1>คลังสินค้า</h1>
+        </Divider>
         <div className="box-table">
           <div className="box-table-item">
             <Table columns={columns} dataSource={data} rowKey="product_id" />
