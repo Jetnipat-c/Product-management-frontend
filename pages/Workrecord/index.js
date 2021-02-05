@@ -12,7 +12,6 @@ const Workrecord = () => {
   const [camera, setCamera] = useState(false);
 
   const openCamera = async () => {
-    console.log(camera);
     setCamera(!camera);
   };
 
@@ -23,16 +22,13 @@ const Workrecord = () => {
       if (key == "product_id") {
         callBackend(value);
         openCamera();
-        return console.log("สนใจ", value);
       } else {
-        //return console.log("ไม่สนใจ", value);
       }
     });
   };
 
   const callBackend = async (product_id) => {
     if (product_id != null && product_id != "") {
-      console.log("scan success");
       let res = await service({
         url: `/product/product_work1`,
         method: "post",
@@ -45,7 +41,6 @@ const Workrecord = () => {
         alert("error");
       }
     } else {
-      //console.log("scan fails");
     }
   };
   const handleError = async (err) => {
@@ -71,9 +66,15 @@ const Workrecord = () => {
               </div>
             </div>
             <div className="btn-box">
-              <Button type="primary" onClick={openCamera}>
-                เปิดกล้อง
-              </Button>
+              {camera ? (
+                <Button type="primary" onClick={openCamera}>
+                  ปิดกล้อง
+                </Button>
+              ) : (
+                <Button type="primary" onClick={openCamera}>
+                  เปิดกล้อง
+                </Button>
+              )}
             </div>
             <div className="btn-box">
               {camera ? (
