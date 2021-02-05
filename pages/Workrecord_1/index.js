@@ -7,7 +7,7 @@ import { service } from "../../service/index";
 const QrReader = dynamic(() => import("react-qr-reader"), {
   ssr: false,
 });
-const Workrecord = () => {
+const Workrecord_1 = () => {
   const [result, setResult] = useState("");
   const [camera, setCamera] = useState(false);
 
@@ -52,7 +52,7 @@ const Workrecord = () => {
     <StyleWrapper>
       <Layouts>
         <Divider>
-          <h1>บันทึกงาน</h1>
+          <h1>บันทึกขั้นตอนที่ 1</h1>
         </Divider>
         <div className="container">
           <div className="container-component">
@@ -97,4 +97,4 @@ const Workrecord = () => {
     </StyleWrapper>
   );
 };
-export default Workrecord;
+export default Workrecord_1;
