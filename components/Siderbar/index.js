@@ -61,7 +61,11 @@ function Siderbar() {
           <Menu.Item key="5">ลบกระจกในระบบ</Menu.Item>
         </SubMenu>
         <SubMenu key="sub2" icon={<TeamOutlined />} title="บันทึกติดตาม">
-          <Menu.Item key="6">ขั้นตอนที่ 1</Menu.Item>
+          <Menu.Item key="6">
+            <Link href="/Workrecord">
+              <a>ขั้นตอนที่ 1 </a>
+            </Link>
+          </Menu.Item>
           <Menu.Item key="7">ขั้นตอนที่ 2</Menu.Item>
         </SubMenu>
         <Menu.Item key="8" icon={<PieChartOutlined />}>
