@@ -61,6 +61,7 @@ const Createproduct = () => {
   const download_qr = async (pathfile) => {
     await router.push(`http://localhost:7000/product/qr_code/${pathfile}`);
   };
+
   return (
     <StyleWrapper>
       <Layouts>

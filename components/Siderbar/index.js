@@ -66,19 +66,17 @@ function Siderbar() {
               <a>ขั้นตอนที่ 1 </a>
             </Link>
           </Menu.Item>
-          <Menu.Item key="7"><Link href="/Workrecord_2">
+          <Menu.Item key="7">
+            <Link href="/Workrecord_2">
               <a>ขั้นตอนที่ 2 </a>
-            </Link></Menu.Item>
+            </Link>
+          </Menu.Item>
         </SubMenu>
         <Menu.Item key="8" icon={<PieChartOutlined />}>
-          เช็คประวัติกระจก
+          <Link href="/Timeline">
+            <a>เช็คประวัติกระจก</a>
+          </Link>
         </Menu.Item>
-        {/* <Menu.Item key="2" icon={<DesktopOutlined />}>
-              Option 2
-            </Menu.Item>   
-            <Menu.Item key="9" icon={<FileOutlined />}>
-              Files
-            </Menu.Item> */}
       </Menu>
     </Sider>
   );

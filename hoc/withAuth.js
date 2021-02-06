@@ -8,12 +8,14 @@ export default (WarpComponent) => {
   const withAuth = (props) => {
     const [isAuthen, setIsAuthen] = useState(false);
     const antIcon = <LoadingOutlined style={{ fontSize: 45 }} spin />;
+
     useEffect(() => {
       checkAuthentication();
     }, []);
+
     const checkAuthentication = async () => {
       let token = await localStorage.getItem("token");
-      if (token) {
+      if (token !== null) {
         let res = await service({
           url: "/auth/sign_token",
           method: "post",
@@ -23,7 +25,7 @@ export default (WarpComponent) => {
           setIsAuthen(true);
           //Router.push("/Home");
         } else {
-          localStorage.removeItem("token");
+          //localStorage.removeItem("token");
           Router.push("/Signin");
         }
       } else {
