@@ -42,5 +42,8 @@ const StyleWrapper = styled.div`
   .site-back-top-basic {
     color: rgba(64, 64, 64, 0.6);
   }
+
+  @media only screen and (min-width: 768px) {
+  }
 `;
 export default StyleWrapper;
