@@ -1,36 +1,112 @@
 import React, { useState, useEffect } from "react";
 import StyleWrapper from "../../styles/components/styles-home";
 import Layouts from "../../Layouts/Layouts";
-import { Divider, Input, Table } from "antd";
+import { Divider, Input, Table, Button, Space } from "antd";
+import Highlighter from "react-highlight-words";
+import { SearchOutlined } from "@ant-design/icons";
 import { service } from "../../service/index";
 import withAuth from "../../hoc/withAuth";
 //const { Search } = Input;
 
 const Home = () => {
-  const [value, setValue] = useState("");
-  const FilterByNameInput = (
-    <Input
-      placeholder="Search Name"
-      value={value}
-      onChange={(e) => {
-        const currValue = e.target.value;
-        setValue(currValue);
-        const filteredData = data.filter((entry) =>
-          entry.name.includes(currValue)
-        );
-        setData(filteredData);
-      }}
-    />
-  );
+  const [data, setData] = useState();
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
+  const [searchInput, setSearchInput] = useState();
+  const formatDollar = (number, maximumSignificantDigits) =>
+    new Intl.NumberFormat("th-TH", {
+      style: "currency",
+      currency: "THB",
+      maximumSignificantDigits,
+    }).format(number);
+
+  const getColumnSearchProps = (dataIndex) => ({
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+    }) => (
+      <div style={{ padding: 8 }}>
+        <Input
+          ref={(node) => {
+            setSearchInput(node);
+          }}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{ width: 188, marginBottom: 8, display: "block" }}
+        />
+        <Space>
+          <Button
+            type="primary"
+            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            icon={<SearchOutlined />}
+            size="small"
+            style={{ width: 90 }}
+          >
+            Search
+          </Button>
+          <Button
+            onClick={() => handleReset(clearFilters)}
+            size="small"
+            style={{ width: 90 }}
+          >
+            Reset
+          </Button>
+        </Space>
+      </div>
+    ),
+    filterIcon: (filtered) => (
+      <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
+    ),
+    onFilter: (value, record) =>
+      record[dataIndex]
+        ? record[dataIndex]
+            .toString()
+            .toLowerCase()
+            .includes(value.toLowerCase())
+        : "",
+    // onFilterDropdownVisibleChange: (visible) => {
+    //   if (visible) {
+    //     setTimeout(() => searchInput.select(), 100);
+    //   }
+    // }
+
+    render: (text) =>
+      searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
+          searchWords={[searchText]}
+          autoEscape
+          textToHighlight={text ? text.toString() : ""}
+        />
+      ) : (
+        text
+      ),
+  });
+
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    setSearchText(selectedKeys[0]);
+    setSearchedColumn(dataIndex);
+  };
+
+  const handleReset = (clearFilters) => {
+    clearFilters();
+    setSearchText("");
+  };
+
   const columns = [
-    {
-      title: FilterByNameInput,
-    },
     {
       title: "รหัสสินค้า",
       dataIndex: "product_id",
       key: "product_id",
       // render: (text) => <a>{text}</a>,
+      ...getColumnSearchProps("product_id"),
     },
     {
       title: "บริษัท",
@@ -74,6 +150,7 @@ const Home = () => {
       dataIndex: "price",
       key: "price",
       responsive: ["lg"],
+      render: (text) => <label>{formatDollar(text)}</label>,
     },
     {
       title: "อื่นๆ",
@@ -82,8 +159,7 @@ const Home = () => {
       responsive: ["lg"],
     },
   ];
-  const [data, setData] = useState([]);
-  //console.log(data);
+
   useEffect(async () => {
     let res = await service({
       url: `/product/stock`,
@@ -94,7 +170,7 @@ const Home = () => {
     } else {
     }
   }, []);
-  //const onSearch = (value) => console.log(value);
+
   return (
     <StyleWrapper>
       <Layouts>
