@@ -15,10 +15,7 @@ function Layouts(props) {
           <Headers />
           <Content style={{ margin: "0 16px" }}>
             <Breadcrumb style={{ margin: "16px 0" }}></Breadcrumb>
-            <div
-              className="site-layout-background"
-              style={{ padding: 24, minHeight: "80vh" }}
-            >
+            <div className="site-layout-background" style={{ padding: 24 }}>
               {props.children}
             </div>
           </Content>

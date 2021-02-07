@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import StyleWrapper from "../../styles/components/styles-home";
+import {StyleWrapper, Table_div} from "../../styles/components/styles-home";
 import Layouts from "../../Layouts/Layouts";
 import { Divider, Input, Table, Button, Space } from "antd";
 import Highlighter from "react-highlight-words";
@@ -177,11 +177,13 @@ const Home = () => {
         <Divider>
           <h1>คลังสินค้า</h1>
         </Divider>
-        <div className="box-table">
-          <div className="box-table-item">
-            <Table columns={columns} dataSource={data} rowKey="product_id" />
+        <Table_div>
+          <div className="box-table">
+            <div className="box-table-item">
+              <Table columns={columns} dataSource={data} rowKey="product_id" />
+            </div>
           </div>
-        </div>
+        </Table_div>
       </Layouts>
     </StyleWrapper>
   );

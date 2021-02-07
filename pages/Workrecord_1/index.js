@@ -34,9 +34,11 @@ const Workrecord_1 = () => {
         method: "post",
         data: { product_id: product_id },
       });
-
+      //console.log(res.data.code);
       if (res && res.status === 200) {
-        alert("success");
+        if (res.data.code === 12) {
+          alert("มีข้อมูลในระบบอยู่แล้ว");
+        } else alert("success");
       } else {
         alert("error");
       }

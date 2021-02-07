@@ -1,7 +1,9 @@
 import styled from "styled-components";
-const StyleWrapper = styled.div`
+export const StyleWrapper = styled.div`
   .ant-divider {
     font-size: 2rem;
   }
 `;
-export default StyleWrapper;
+export const Table_div = styled.div`
+  overflow-x: hidden;
+`;
