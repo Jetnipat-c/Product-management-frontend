@@ -18,6 +18,7 @@ const StyleWrapper = styled.div`
     --gray: #7f7f7f;
     --reddg: #e2071b;
     --buledg: #212554;
+    --gray_rp: #f9fafb !important;
   }
 `;
 export default StyleWrapper;
